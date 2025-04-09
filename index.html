@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Chango&family=Chewy&family=DynaPuff:wght@400..700&family=Kaushan+Script&family=Kings&family=Kirang+Haerang&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Petrona:ital,wght@0,100..900;1,100..900&family=Rubik+Wet+Paint&family=Sofadi+One&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>QUIZ#1</title>
+</head>
+<body>
+	<div class="shadow-box row" id="BMI-box">        
+	    <div class="col-sm-6">
+       		<img src="https://lirp.cdn-website.com/69c0b277/dms3rep/multi/opt/BMI+levels-640w.jpg" length="425" width="500" alt="BMI">
+      	</div>
+
+        <div class="col-sm-6">
+        	<h3>BMI CALCULATOR </h3>
+	       	<p><b> Body Mass Index (BMI) </b> categories are standardized classifications used to assess weight status based on an individual's height and weight measured in kilogram per square meter (kg/m^2) </p>
+	        <hr> 
+	        <form>
+				<label for="inputKilogram" class="form-label">Kilogram:</label>
+	            <input type="number" class="form-control" id="inputKilogram" placeholder="Weight In Kilogram...">
+
+				<label for="inputMeter" class="form-label">Meter:</label>
+	            <input type="number" class="form-control" id="inputMeter" placeholder="Height In Meter...">
+
+	            <button type="button" class="btn btn-danger" onClick="CalculateBMI()">Calculate BMI</button>
+	            <button type="button" class="btn btn-danger" onClick="window.location.reload()">Refresh</button>
+			</form>
+        </div>
+
+        <div id="BMIResult" class="mt-3">
+        	<p> Output </p>
+        </div>
+    </div>
+
+    <p class="source"> Source: https://www.pacehospital.com/bmi-calculator-ranges-importance </p>
+
+    <hr> 
+
+    <p class="name"> &#64;SOFIA LAURENCE F. PADOJINOG | 9 - SAPPHIRE </p>
+    <script> 
+        function CalculateBMI() {
+		    var kg = document.getElementById("inputKilogram").value;
+		    var meter = document.getElementById("inputMeter").value; 
+		    var bmi = kg / Math.pow(meter,2)
+		    var Message = "";
+
+		    if (kg === "" || meter === "") {
+		        window.alert("Fill in the form first")
+		    }
+		    else {
+		        if (bmi >= 1 && bmi <= 18.5) {
+		            Message = "You are underweight";
+		        } 
+
+		        else if (bmi >= 18.6 && bmi <= 24.9) {
+		            Message = "You have normal weight, keep it up!";
+		        } 
+
+		        else if (bmi >= 25 && bmi <= 29.9) {
+		            Message = "You are overweight!";
+		        } 
+
+		        else if (bmi >= 30) {
+		            Message = "You are obese!";
+		        } 
+
+		        else {
+		            window.alert("Invalid range!");
+		        }
+		    }
+		    document.getElementById("BMIResult").innerHTML = "Your BMI: " +  bmi.toFixed(2) + "|" + Message;
+		}
+    </script>
+</body>
+</html>
